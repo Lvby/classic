@@ -187,3 +187,59 @@ plot_confusion_matrix(cnf_matrix, classes=class_names, normalize=True,
 
 plt.show()
 
+import seaborn as sns
+plt.figure(figsize=(9,6))
+plt.subplot(2,2,1)
+sns.violinplot(x='class',y='petal-length',data=data)
+plt.subplot(2,2,2)
+sns.violinplot(x='class',y='petal-width',data=data)
+plt.subplot(2,2,3)
+sns.violinplot(x='class',y='sepal-length',data=data)
+plt.subplot(2,2,4)
+sns.violinplot(x='class',y='sepal-width',data=data)
+
+# Import necessary libraries
+#import seaborn as sns
+#import matplotlib.pyplot as plt
+
+# Initialize Figure and Axes object
+fig, ax = plt.subplots(figsize=(10,4))
+
+# Load in the data
+#data = sns.load_dataset("iris.csv")//generate error->not correct path
+
+# Create swarmplot
+sns.swarmplot(x="class", y="petal-length", data=data, ax=ax)
+
+# Show plot
+plt.show()
+
+#Scatter Plot with Iris Dataset (Relationship between Sepal Length and SepalWidth) # Method 1
+
+data.plot(kind ='scatter', x ='sepal-length', y ='sepal-width')
+plt.show()
+
+#Scatter Plot with Iris Dataset (Relationship between Petal Length and Petal Width) Method 1
+
+data.plot(kind ='scatter', x ='petal-length', y ='petal-width')
+plt.show()
+
+
+# import correlation matrix to see parametrs which best correlate each other
+# According to the correlation matrix results Petal- Length and
+#Petal_Width have positive correlation which is proved by the scatter plot discussed above
+
+corr = data.corr()
+plt.figure(figsize=(5,4)) 
+sns.heatmap(corr, 
+            xticklabels=corr.columns.values,
+            yticklabels=corr.columns.values,
+            cmap='magma',annot=True)
+plt.show()
+
+
+
+
+
+
+
